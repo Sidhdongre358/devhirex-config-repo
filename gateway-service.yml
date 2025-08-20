@@ -1,0 +1,31 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+spring:
+ application:
+    name: gateway-service
+server:
+  port: 8080
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
+        - id: job-service
+          uri: lb://job-service
+          predicates:
+            - Path=/api/jobs/**
+        - id: application-service
+          uri: lb://application-service
+          predicates:
+            - Path=/api/applications/**
+        - id: interview-service
+          uri: lb://interview-service
+          predicates:
+            - Path=/api/interviews/**

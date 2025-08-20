@@ -1,8 +1,8 @@
 spring:
   application:
-    name: application-service
+    name: job-service
 server:
-  port: 8083
+  port: 8082
 
 eureka:
   client:
